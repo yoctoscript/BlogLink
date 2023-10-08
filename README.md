@@ -10,7 +10,8 @@ Web API application with blog-related functionality, developed using ASP.NET Cor
 ## Features
 Here's a  list of the key features integrated into my web application.
 
-- [ ] Authentication & Authorization System
+- [x] JWT token and API key support for authentication and authorization
+- [ ] 
 
 ## Preview (YouTube)
 ...
