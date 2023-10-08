@@ -12,10 +12,12 @@ public class UsersController : ControllerBase
 {
     private readonly UserManager<IdentityUser> userManager;
     private readonly JwtService jwtService;
-    public UsersController(UserManager<IdentityUser> userManager, JwtService jwtService)
+    private readonly ApiKeyService apiKeyService;
+    public UsersController(UserManager<IdentityUser> userManager, JwtService jwtService, ApiKeyService apiKeyService)
     {
         this.userManager = userManager;
         this.jwtService = jwtService;
+        this.apiKeyService = apiKeyService;
     }
 
     [Route("register")]
@@ -86,8 +88,9 @@ public class UsersController : ControllerBase
         {
             return BadRequest("Bad credentials");
         }
-        var response = jwtService.CreateToken(user);
-        return Ok(response);
+        var jwtToken = jwtService.CreateToken(user);
+        var apiKey = apiKeyService.CreateApiKey(user);
+        return Ok(new {jwt = jwtToken, api = new {key = apiKey}});
     }
 
 }

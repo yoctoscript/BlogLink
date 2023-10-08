@@ -5,7 +5,8 @@ using BlogLink.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-
+using Microsoft.AspNetCore.Authentication;
+using BlogLink.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,9 +51,12 @@ builder.Services
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
         };
-    });
+    })
+    .AddScheme<AuthenticationSchemeOptions, ApiKeyAuthenticationHandler>("ApiKey", options => {});
 
 builder.Services.AddAuthorization();
+
+builder.Services.AddScoped<ApiKeyService>();
 
 builder.Services.AddControllers();
 

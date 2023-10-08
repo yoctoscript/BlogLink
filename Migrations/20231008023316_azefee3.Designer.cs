@@ -3,6 +3,7 @@ using System;
 using BlogLink.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,20 +11,22 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogLink.Migrations
 {
     [DbContext(typeof(ApplicationRepository))]
-    partial class ApplicationRepositoryModelSnapshot : ModelSnapshot
+    [Migration("20231008023316_azefee3")]
+    partial class azefee3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
 
             modelBuilder.Entity("BlogLink.Models.UserApiKey", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ApiKeyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("IdentityUserId")
+                    b.Property<string>("Id")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -31,7 +34,9 @@ namespace BlogLink.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("ApiKeyId");
+
+                    b.HasIndex("Id");
 
                     b.ToTable("UserApiKeys");
                 });
@@ -226,6 +231,17 @@ namespace BlogLink.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("BlogLink.Models.UserApiKey", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

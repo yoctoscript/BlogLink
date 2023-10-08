@@ -3,6 +3,7 @@ using System;
 using BlogLink.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogLink.Migrations
 {
     [DbContext(typeof(ApplicationRepository))]
-    partial class ApplicationRepositoryModelSnapshot : ModelSnapshot
+    [Migration("20231008030245_azefee333222133330")]
+    partial class azefee333222133330
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");

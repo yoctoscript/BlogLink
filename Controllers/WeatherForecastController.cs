@@ -14,7 +14,7 @@ public class WeatherForecastController : ControllerBase
 
     [HttpGet]
     [Route("get")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = "Bearer, ApiKey")]
     public IEnumerable<WeatherForecast> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast

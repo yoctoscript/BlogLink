@@ -7,7 +7,7 @@ public static class Roles
     public static string Administrator {get;} = "Administrator";
     public static string Member {get;} = "Member";
 }
-
+// TODO: remove this, only work with claims
 public static class RolesCreator
 {
     public static async Task CreateRoles(this IServiceProvider services)
