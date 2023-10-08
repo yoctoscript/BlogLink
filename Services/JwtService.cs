@@ -49,7 +49,7 @@ public class JwtService
 
     private SigningCredentials CreateSigningCredentials() =>
         new SigningCredentials(
-            new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["Jwt:Key"]!)),
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"])),
             SecurityAlgorithms.HmacSha256
         );
 }
