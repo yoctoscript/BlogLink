@@ -11,7 +11,7 @@ Web API application with blog-related functionality, developed using ASP.NET Cor
 Here's a  list of the key features integrated into my web application.
 
 - [x] JWT token and API key support for authentication and authorization
-- [ ] 
+- [ ] Blog CRUD
 
 ## Preview (YouTube)
 ...
