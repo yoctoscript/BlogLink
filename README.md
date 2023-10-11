@@ -14,7 +14,7 @@ Here's a  list of the key features integrated into my web application.
 - [ ] Blog CRUD
 
 ## Preview (YouTube)
-...
+..
 
 ### Tags:
 C#, .NET 7.0, Entity Framework Core, SQLite, WebAPI, Postman
